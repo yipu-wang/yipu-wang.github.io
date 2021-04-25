@@ -9,9 +9,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -27,15 +31,34 @@
                 <li><a href="#hero" class="nav-link scrollto active"><i class="bi bi-house"></i> <span>Home</span></a></li>
                 <li><a href="#about" class="nav-link scrollto"><i class="bi bi-person-circle"></i> <span>About</span></a></li>
                 <li><a href="#workandedu" class="nav-link scrollto"><i class="bi bi-building"></i> <span>Work and Education</span></a></li>
-                <li><a href="#portfolio" class="nav-link scrollto"><i class="bi bi-book"></i> <span>Portfolio</span></a></li>
+                <li>
+                    <a class=" dropdown-toggle" id="profile-lists" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-book"></i>Portfolio
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="profile-lists">
+                        <a class="dropdown-item" href="#portfolio-l-tree">L-Tree</a>
+                        <a class="dropdown-item" href="#portfolio-culinary-tales">Culinary Tales</a>
+                    </div>
+                    <!-- <a href="#portfolio" class="nav-link scrollto dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="true"><i class="bi bi-book"></i> <span>Portfolio</span></a>
+                    <ul id="portfolio-content" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a href="#l-tree" class="dropdown-item nav-link scrollto"><span>L-Tree</span></a></li>
+                        <li><a href="#culinary-tales" class="dropdown-item nav-link scrollto"><span>Culinary Tales</span></a></li>
+                    </ul> -->
+                </li>
+                <!-- <li><a href="#portfolio" class="nav-link scrollto"><i class="bi bi-book"></i> <span>Portfolio</span></a></li> -->
                 <!-- <li><a href="#contact" class="nav-link scrollto"><i class="bi bi-envelope"></i> <span>Contact</span></a></li> -->
             </ul>
         </nav>
     </header>
     <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
         <div id="message">
-            <h1><b>Hello</b></h1>
-            <span><h3>I'm a UX Designer/Web Developer/Game Programmer</h3></span>
+            <h1>Hello,</h1>
+            <div class="flex-row">
+                <div class="splashscreen-effect">I'm a 
+                    <span class="flex-column" id="hero-designer">UX Designer</span>/
+                    <span class="flex-column" id="hero-developer">Web Developer</span>/
+                    <span class="flex-column" id="hero-programmer">Game Programmer</span>
+                </div>
         </div>
         <footer >
             <div class="image-credit">Photo by Domenico Loia on Unsplash</div>
@@ -168,7 +191,17 @@
                     <div class="experience">
                         <h3>The University of Sydney | 2020 - now</h3>
                         <ul>
-                            <li></li>
+                            <li>Conducted user research and designed the website for Culinary Tales, a non-profit enterprise based in Sydney that offers cooking lessons hosted by refugee chefs.</li>
+                            <li>Designed and implemented the frontend of an e-commerce web application.</li> 
+                            <li>Designed and built a digital prototype of a site installation for Lizhi Park, Shenzhen that connect the site to Chinese traditional culture and sustainable agriculture.</li>
+                            <li>Designed and built interactive applications that utilizes computer vision, IMU data and mouse/keyboard inputs.</li>
+                            <li>Main Courses:
+                                <ul>
+                                    <li>Design Thinking</li>
+                                    <li>Interface Design</li>
+                                    <li>Web App Development</li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <hr>
@@ -192,13 +225,22 @@
         </section>
         <!-- ======== Portfolio ========= -->
         <section id="portfolio" class="portfolio">
-                <div class="container">
+                <div class="container" id="portfolio-l-tree">
                     <div class="section-title">
-                        <h2>Portfolio</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu ex sit amet turpis consectetur ultricies. Suspendisse cursus magna est. Duis nec elementum sem. Nunc faucibus erat eu tincidunt porttitor. Proin aliquet metus lobortis sapien facilisis vulputate. Aenean sit amet malesuada nisl, vitae interdum est. Suspendisse eu dolor odio. Vivamus ultrices ut quam a pulvinar. Aliquam sed elementum ligula. Fusce faucibus vehicula volutpat. Nunc sodales risus in augue iaculis fringilla.</p>
+                        <h2>L-Tree <span class="subtitle">-- Interactive Site Installation</span></h2> 
                     </div>
-                    <div class="row">
-                        
+                    <h3 class="portfolio-section">High Fidelity Prototype with Unreal Engine</h3>
+                    <p>This design is an elaboration of "Grass and Grain" project of the University of Sydney, which celebrates the Indigenous Australian culture and advocates a peaceful co-existance with the nature, love for the land and to address the emerging environmental issues.</p>
+
+                    <div class="video-responsive">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IlpCzndA0Zs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                    
+                    </div>
+
+                    <h3 class="portfolio-section">Design Process</h3>
+                    <hr>
+                    <div id="ltree-gallery">          
+                        <!-- <img class="portfolio-image" src="./assets/ltree/LTree_1.png" alt="">
+                        <img class="portfolio-image" src="./assets/ltree/LTree_2.png" alt=""> -->
                     </div>
                 </div>
             </section>
