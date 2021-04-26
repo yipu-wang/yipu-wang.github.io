@@ -242,6 +242,7 @@ section{
 .portfolio-image{
   max-width: 100%;
   object-fit: contain;
+  padding:10px 0px;
 }
 .portfolio-section{
   margin:20px;
