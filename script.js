@@ -14,6 +14,7 @@ window.onload = function(){
         let str = './assets/ltree/' + name;
         let img = createElement("img", gallery);
         img.setAttribute("class", "portfolio-image");
+        img.setAttribute("class", "container-fluid")
         img.setAttribute("src", str);
         img.setAttribute("alt", name);
         this.console.log(img);
