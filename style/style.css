@@ -3,6 +3,7 @@
 --------------------------------------------------------------*/
 :root{
   --color-nav:rgb(13, 17, 36);
+  --color-background-grey: #eeeeee
 }
 *{
   font-family: 'Roboto', sans-serif;
@@ -134,7 +135,7 @@ section{
   min-height: 100vh;
 }
 .section-bg {
-  background: #f5f8fd;
+  background: var(--color-background-grey);
 }
 .section-title {
   padding: 30px 0px;
@@ -206,7 +207,7 @@ section{
 .experience{
   padding: 10px 10px;
   margin-bottom: 10px;
-  background-color: #eeeeee;
+  background-color: var(--color-background-grey);
   border-radius: 5px;
   height: auto;
   overflow: auto;
@@ -244,6 +245,14 @@ section{
   margin:20px;
   /* padding: 20px 0px; */
 }
-#double-diamond{
 
+.portfolio-card{
+  background-color: var(--color-background-grey);
+}
+.portfolio-card h4{
+  display:flex;
+  color: rgb(0, 149, 194);
+  font-size: 1.5em;
+  padding: 10px 0px;
+  justify-content: center;
 }
