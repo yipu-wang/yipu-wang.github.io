@@ -1,376 +1,66 @@
+
+<!-- Code from d3-graph-gallery.com -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style/style.css">
+<meta charset="utf-8">
+<link rel="stylesheet" href="styles/style.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
-</head>
+<!-- Create a div where the graph will take place -->
+<body style="background-color: #030303">
+	<h2>Our Track Record</h2>
+	<div class="graphcontainer">
+		<div class="demo-button" onclick="changeDemoData(-1)">Prev
+			<img src="assets/left.svg" alt="">
+		</div>
 
-<body>
-    <header id="header">
-        <div class="d-flex flex-column">
-            <div class="profile">
-                <img id="thumbnail" class="img-fluid text-center rounded-circle" src="assets/Thumbnail.jpg" alt="LOGO">
-                <h1 class="d-flex justify-content-center"><a href="#">Yipu Wang</a></h1>
-            </div>
-        </div>
-        <nav id="navbar" class="nav-menu navbar d-flex justify-content-center">
-            <ul>
-                <li><a href="#hero" class="nav-link scrollto active"><i class="bi bi-house"></i> <span>Home</span></a></li>
-                <li><a href="#about" class="nav-link scrollto"><i class="bi bi-person-circle"></i> <span>About</span></a></li>
-                <li><a href="#workandedu" class="nav-link scrollto"><i class="bi bi-building"></i> <span>Work and Education</span></a></li>
-                <li>
-                    <a class=" dropdown-toggle" id="profile-lists" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-book"></i>Portfolio
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="profile-lists">
-                        <a class="dropdown-item" href="#portfolio-l-tree">L-Tree</a>
-                        <a class="dropdown-item" href="#portfolio-culinary-tales">Culinary Tales</a>
-                    </div>
-                    <!-- <a href="#portfolio" class="nav-link scrollto dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="true"><i class="bi bi-book"></i> <span>Portfolio</span></a>
-                    <ul id="portfolio-content" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a href="#l-tree" class="dropdown-item nav-link scrollto"><span>L-Tree</span></a></li>
-                        <li><a href="#culinary-tales" class="dropdown-item nav-link scrollto"><span>Culinary Tales</span></a></li>
-                    </ul> -->
-                </li>
-                <!-- <li><a href="#portfolio" class="nav-link scrollto"><i class="bi bi-book"></i> <span>Portfolio</span></a></li> -->
-                <!-- <li><a href="#contact" class="nav-link scrollto"><i class="bi bi-envelope"></i> <span>Contact</span></a></li> -->
-            </ul>
-        </nav>
-    </header>
-    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-        <div id="message">
-            <h1>Hello,</h1>
-            <div class="flex-row">
-                <div class="splashscreen-effect">I'm a 
-                    <span class="flex-column" id="hero-designer">UX Designer</span>/
-                    <span class="flex-column" id="hero-developer">Web Developer</span>/
-                    <span class="flex-column" id="hero-programmer">Game Programmer</span>
-                </div>
-        </div>
-        <footer >
-            <div class="image-credit">Photo by Domenico Loia on Unsplash</div>
-        </footer>
-    </section>
-    <main id="main">
-        <!-- =====About Page========= -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-title">
-                    <h2>About</h2>
-                    <p>I'm currently undertaking a master's degree in interaction design and electronic arts at the University of Sydney, graduating in 2022.  I studied computer science at the University of Texas at Austin and worked at Virtuos Games as a software engineer.  
-                            I'm passionate about designing innovative HCI that creates immersive user experiences.
-                            I have strong technological background in frontend web development and software development in general.
-                    </p>
-                    <p> I'm a big fan of jazz music and my favorite artists are John Coltrane, Thelonious Monk and Chet Baker. I'm a casual gamer with a wide range of tastes, and I've recently started painting Warhammer miniatures.</p>
-                </div>
-                <div class="row">
+		<div id="demography-graph"></div>
+		<div class="demo-button" onclick="changeDemoData(1)">Next
+			<img src="assets/right.svg" alt="">
+		</div>
 
-                </div>
-            </div>
-            <div id="skills" class="container skills section-bg">            
-                    <div class="section-title">
-                    <h2>Skills</h2>
-                    <p>
-                        The following charts are not inclusive. I just put the coding languages or development tools I'm most experienced with since the beginning of my career until now.
-                    </p>
-                    <hr>
-                    <p>I wrote C++ daily during my career as software engineer at Virtuos Games but I cannot say I mastered every aspects of C++ due to its intricate nature. 
-                        However, I'm confident that my skills in C++ would satisify your expectation as a game developer or software engineer in general.
-                    </p>
-                    <hr>
-                    <p>I'm currently learning tools for interfaces design such as Balsamiq and Figma and working on a web application project with Vue.js.
-                        I'll add these tools into my skillset soon. 
-                    </p>
-                    <hr>
-                    </div>
-                    <div class="row">
-                    <div class="col-lg-6">
-                        <div class="progress">
-                        <span class="skill">HTML <i class="val">100%</i></span>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
-                        </div>
-                        </div>
-            
-                        <div class="progress">
-                        <span class="skill">C++ <i class="val">85%</i></span>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%"></div>
-                        </div>
-                        </div>
-            
-                        <div class="progress">
-                        <span class="skill">JavaScript <i class="val">80%</i></span>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%"></div>
-                        </div>
-                        </div>
-            
-                    </div>
-            
-                    <div class="col-lg-6">
-            
-                        <div class="progress">
-                            <span class="skill">User Research Methods <i class="val">90%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%"></div>
-                            </div>
-                            </div>
-                
-                            <div class="progress">
-                            <span class="skill">CSS <i class="val">70%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%"></div>
-                            </div>
-                            </div>
-                
-                            <div class="progress">
-                            <span class="skill">Unreal Engine <i class="val">60%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width:60%"></div>
-                            </div>
-                        </div>            
-                    </div>
-            
-                </div>
-            </div>
-        </section>
-        <!-- ======== Work and Education ========= -->
-        <section id="workandedu" >
-            <div class="container">
-                <div class="section-title">
-                    <h2>Working Experience</h2>
-                    <h3>Virtuos Games | 2017.6 - 2019.11</h3>
-                    <hr>
-                    <div class="work">
-                        <h4>Senior Software Engineer | 2019 </h4>
-                        <ul>
-                            <li><p> Participated in the porting of XCOM 2 Collection for Nintendo Switch in 2019.</p> </li>
-                            <li><p> Awarded Virtuos Employee of the Month in Aug, 2019.</p></li>
-                            <li><p> Participated in the implementation of low level systems for Unreal Engine 3 to support Nintendo Switch.</p></li>
-                            <li><p> Collaborated with designers to create gameplay features with optimized GPU and memory performance.</p></li>
-                            <li><p> Developed tools for environment artists.</p></li>
-                            <li><p> Mentored junior software engineers.</p></li>
-                        </ul>
-                    </div>
-                    <div class="experience">
-                        <h4>Software Engineer | 2017-2019</h4>
-                        <ul>
-                            <li> 
-                            Participated in the development and shipped Starlink: Battle for Atlas on Nintendo Switch platform in Oct, 2018, and worked on following DLC contents.
-                            </li>
-                            <li>
-                                Awarded Virtuos Employee of the Month in June, 2018.
-                            </li>
-                            <li>
-                                Collaborated with designers to create gameplay features with optimized CPU/GPU performance.
-                            </li>
-                            <li>Integrated WWise into the game and developed tools and scripts and sound designers. </li>
-                            <li>Worked with sound designers to re-structure the sound system to optimize CPU overhead on Nintendo Switch.</li>
-                            <li>
-                                Bug fixing due to integration and cross-platform development.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="section-title">
-                    <h2>Education</h2>
-                    <div class="experience">
-                        <h3>The University of Sydney | 2020 - now</h3>
-                        <ul>
-                            <li>Conducted user research and designed the website for Culinary Tales, a non-profit enterprise based in Sydney that offers cooking lessons hosted by refugee chefs.</li>
-                            <li>Designed and implemented the frontend of an e-commerce web application.</li> 
-                            <li>Designed and built a digital prototype of a site installation for Lizhi Park, Shenzhen that connect the site to Chinese traditional culture and sustainable agriculture.</li>
-                            <li>Designed and built interactive applications that utilizes computer vision, IMU data and mouse/keyboard inputs.</li>
-                            <li>Main Courses:
-                                <ul>
-                                    <li>Design Thinking</li>
-                                    <li>Interface Design</li>
-                                    <li>Web App Development</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <hr>
-                    <div class="experience">
-                        <h3>The University of Texas at Austin | 2013 - 2017</h3>
-                        <ul>
-                            <li>Average GPA 3.45 out of 4.0</li>
-                            <li>Texas Honors in 2016 and 2017. </li>
-                            <li>Main Courses: 
-                                <ul><li>Advanced Computer Architecture</li>
-                                    <li>Computer Graphics</li>   
-                                    <li>Game Engines</li>
-                                    <li>Software Engineering</li>
-                                    <li>Mobile Application Development</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ======== Portfolio ========= -->
-        <section id="portfolio" class="portfolio">
-                <div class="container" id="portfolio-l-tree">
-                    <div class="section-title">
-                        <h2>L-Tree <span class="subtitle">-- Interactive Site Installation</span></h2> 
-                        <p>This design is an elaboration of "Grass and Grain" project of the University of Sydney, which celebrates the Indigenous Australian culture and advocates a peaceful co-existance with the nature, love for the land and to address the emerging environmental issues.
-                            I worked in a team of 3, in which we all participated in research and ideation process, and I imported the 3D models made by my teammates into Unreal Engine, set up the enviroment and implemented the interactions. I also recorded and edited the concept video. 
-                        </p>
-                    </div>
-                    <h3 class="portfolio-section">High Fidelity Prototype with Unreal Engine</h3>
+	</div>
+	<h2 id="i4">Generational Difference in i4 Neuroleader Model</h2>
+	<div id="legend">
+		<div class="legend-entry">
+			<div style="height: 24px; width: 24px; background-color: #9C258F;"></div>			<div>Boomer</div>
+			<div style="height: 24px; width: 24px; background-color: #FDC344;"></div>			<div>Generation X</div>
+			<div style="height: 24px; width: 24px; background-color: #1BBDD4;"></div>			<div>Millennial / Zoomer</div>
+			<button id="min" class ="typeButton" onclick="update(0)" title="Check out the minimum score of each generation">Min</button>
+			<button id="median" class ="typeButton" onclick="update(1)" title="Check out the median score of each generation">50%</button>
+			<button id="max" class ="typeButton" onclick="update(2)" title="Check out the maximum score of each generation">Max</button>
+		</div>
 
-                    <div class="video-responsive">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IlpCzndA0Zs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                    
-                    </div>
+	</div>
+	<div class="graphcontainer">
+		<div id="my_dataviz"></div>
+		<div id="change_category"> 
+			<div><img id="prev" onclick="changeCategory(-1)" alt="Prev" src="assets/blue-prev.svg"></div>
+			<div><img src="assets/i4_icon.svg"></div>
+			<div><img id= "next" onclick="changeCategory(1)" alt="Next" src="assets/yellow-next.svg"></div>
+		</div>
+	</div>
+	<div id="main-texts">
+		<div class="title-bar">
+			<div>
+				<img id="category_icon" src="assets/agility.svg">
+				<h2 id="title">Placeholder Text, you really shouldn't see this</h2>
+			</div>
+			<div style="margin-left: 3%;">
+				<img src="assets/video.svg">
+				<h3 id="title", style="font-size: 2em">Documentary</h2>
+			</div>
+		</div>
+			
+		<div>
+			<p id="description">
+				Placeholder Text, you really shouldn't see this
+			</p>
+		</div>
+	</div>
 
-                    <h3 class="portfolio-section">Design Process</h3>
-                    <hr>
-                    <div id="ltree-gallery">          
-                        <!-- <img class="portfolio-image" src="./assets/ltree/LTree_1.png" alt="">
-                        <img class="portfolio-image" src="./assets/ltree/LTree_2.png" alt=""> -->
-                    </div>
-                </div>
-
-                <div class="container" id="portfolio-culinary-tales">
-                    <div class="section-title">
-                        <h2>Culinary Tales <span class="subtitle"> (Ongoing)</span></h2> 
-                        <p> This project is for IDEA 9105 Interface Design. I'm working in a team of 3 where we meet with our client and conduct user researches together, 
-                            collaboratively but individually come up with different solutions on different platforms. Culinary Tales is a non-profit enterprise that employs
-                            refugee chefs and offer cooking class at target Sydney locals and our goal is to re-deisgn the website so that they could pivot their focus towards 
-                            online recipe collections and virtual cooking tutorials.</p>
-                    </div>
-                    <h3 class="portfolio-section">Design Process</h3>
-                    <div id="culinarytales-gallery">          
-                            <img class="portfolio-image" id="double-diamond" src="./assets/culinarytales/doublediamond.png" alt="Culinary Tales Double Diamond"> -->    
-                    </div>
-                    <h3 class="portfolio-section">Design Brief</h3>
-                    <div class="container"> 
-                        <p>There are 3 key expected functionalities for our website:</p>
-                        <ul><li>The chef’s stories - Who the chefs
-                            are, their background and cooking
-                            experience</li>
-                        <li>Recipes – the user can follow recipes
-                            from the Culinary Tales chefs</li>
-                        <li>Book a class – view and register for
-                            cooking classes</li></ul>
-    
-                        <p>Our objectives at the current stage:</p>
-                        <ul><li>Define the Culinary Tales user and
-                            their needs</li>
-                        <li>Explore and iterate ideas to fulfil
-                            these users needs</li>
-                            <li>Create wireframes to test the idea</li>
-                        </ul>
-                        <p>Our final outcome should be a high-fidelity prototype, but at week 8 we had just finished creating wireframes and gotten feedback from our client.</p>
-                    </div>
-                    <hr>
-                    <h3 class="portfolio-section">User Research</h3>
-                    <div class="container"> 
-                    <p>Three online platforms were chosen to provide a deeper
-                        understanding of the target audience that Culinary Eats seeks
-                        to address, and to better understand these users desires and
-                        latent needs. Each platform falls under the umbrella of an
-                        online community centred around food, however each one
-                        was chosen as they differ slightly in what type of platform it is,
-                        their offerings, functionality and focus.
-                    </p>
-                    <p>A criterion was also created in
-                        order to gather data and insights
-                        specifically relevant to the design
-                        brief. This involved the following:</p>
-                    <ul><li>Australian users residing physically in Australia</li>
-                    <li>Comments within the past 24 months in order to
-                        provide accuracy/relevance</li>
-                    <li>Comments that explain why the user feels the way
-                        they do (e.g., satisfied/dissatisfied)</li>
-                    <li>Comments that capture a variety of user
-                        perspectives</li>
-                        <li>Comments that pose a potential user problem or
-                            question</li>
-                    </ul>
-                    <p>Here's the data we collected from these platforms:</p>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <img src="./assets/culinarytales/online_ethnography_1.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="">
-                        </div>
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <img src="./assets/culinarytales/online_ethnography_2.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="">
-                        </div><div class="col-lg-4 col-md-12 mb-4">
-                            <img src="./assets/culinarytales/online_ethnography_3.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="">
-                        </div>
-                    </div>
-                    <p>We applied thematic analysis with the data
-                        collected, several themes were found and these
-                        were placed in two broader categories of quality and connection</p>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 m-4 border border-secondary rounded shadow-1-strong portfolio-card">
-                            <h4 class="w-100">Face-To-Face</h4>
-                            <p>Research found that during physical
-                                    classes, users preferred having space and
-                                    being in a less crowded environment,
-                                    enjoying small groups and more intimate
-                                    settings. They also preferred hands on
-                                    experiences instead of just watching</p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 m-4 border border-secondary rounded shadow-1-strong portfolio-card">
-                                <h4 class="w-100">Recipe Quality</h4>
-                                <p>Many users care for detailed information
-                                        and highly engage with the content. They
-                                        value details, paying attention to
-                                        instructions carefully. Users can also
-                                        question the recipe, such as the types of
-                                        ingredients or quantities used.</p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 m-4 border border-secondary rounded shadow-1-strong portfolio-card">
-                            <h4 class="w-100">Visual Quality</h4>
-                            <p>Users are extremely visual, where findings
-                                    revealed that users not only pay attention to
-                                    the food itself, but also to how the food
-                                    initially appears, as well as the videos</p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 m-4 border border-secondary rounded shadow-1-strong portfolio-card">
-                            <h4 class="w-100">Dietary Restrictions</h4>
-                            <p>Quality in the type of food offerings was
-                                    also a large finding, where users often ask
-                                    and place high value on recipe alternatives
-                                    due to medical requirements</p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 m-4 border border-secondary rounded shadow-1-strong portfolio-card">
-                            <h4 class="w-100">Communication</h4>
-                            <p>Users want to know exactly what is being
-                                    advertised/offered to them in class
-                                    offerings. They also value clear and easy
-                                    instruction and strong customer service</p>
-                        </div>
-                        <div class="col-lg-3 col-md-6 m-4 border border-secondary rounded shadow-1-strong portfolio-card">
-                            <h4 class="w-100">Authenticity</h4>
-                            <p>Users value the authenticity of the food
-                                    itself in expressing the culture it represents,
-                                    as well as comparing this to recipes in their
-                                    favourite restaurants.</p>
-                        </div>
-
-                    </div>
-                    <hr>
-
-
-                </div>
-            </section>
-    </main>
 </body>
-</html>
+
+<script src="dataviz.js"></script>
+<script src="demographyviz.js"></script>
