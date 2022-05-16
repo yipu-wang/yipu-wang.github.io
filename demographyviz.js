@@ -172,7 +172,7 @@ function showDemography(inIndex)
 		.attr("y", function(d) { return captions_y[demoIndex](match[d.category]); })
 		.text(function(d){return d.category + ": " + d.percentage + "%";/*return Number.parseFloat(d.value).toFixed(2)*/})
         .style("font-family","ProximaNova")
-        .style("font-size", demoIndex == 3 ? "1.2em":"1.5em")
+        .style("font-size","16px")
         .style("text-transform", "capitalize")
 
 		texts.transition().duration(450)
