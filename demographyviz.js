@@ -1,5 +1,13 @@
 var curDemoIndex = 0;
 
+let demo_title = ["gender ratio",
+            "immigration status",
+            "Management or non-management position",
+            "Industrial sectors"
+            ]
+let demo_title_pos_x = [0,100,200,400];
+let demo_title_pos_y = [0,0,0,0];
+
 var demograhpics = ["gender","immigrant status","position","industry group"]
 // set the dimensions and margins of the graph
 let palettes = [["#81D8D0", "#F50A98"],
@@ -64,7 +72,7 @@ var x_positions = [d3.scaleOrdinal()
         .range([100, 300]),
     d3.scaleOrdinal()
         .domain([0,1,2,3,4,5,6,7,8,9])
-        .range([20, 600, 25, 100, 250, 350, 300, 600, 650, 500])
+        .range([20, 600, 25, 100, 300, 350, 300, 600, 650, 600])
 ]
 
 var y_positions = [d3.scaleOrdinal()
@@ -78,7 +86,7 @@ var y_positions = [d3.scaleOrdinal()
         .range([250, 400]),
         d3.scaleOrdinal()
         .domain([0,1,2,3,4,5,6,7,8,9])
-        .range([120, 530, 300, 500, 20, 200, 430, 400, 250, 70])
+        .range([120, 540, 320, 525, 80, 210, 450, 420, 260, 150])
 ]
 
 var captions_x = [d3.scaleOrdinal()
@@ -92,7 +100,7 @@ var captions_x = [d3.scaleOrdinal()
     .range([238, 480]),
     d3.scaleOrdinal()
     .domain([0,1,2,3,4,5,6,7,8,9])
-    .range([0, 600, 0, 80, 250, 350, 300, 580, 660, 500])
+    .range([0, 600, 0, 80, 250, 350, 300, 580, 660, 600])
 ]
 var captions_y = [d3.scaleOrdinal()
     .domain([0, 1])
@@ -105,7 +113,7 @@ var captions_y = [d3.scaleOrdinal()
     .range([160, 460]),
     d3.scaleOrdinal()
     .domain([0,1,2,3,4,5,6,7,8,9])
-    .range([130, 570, 330, 540, 20, 220, 465, 425, 270, 80])
+    .range([120, 560, 330, 540, 70, 210, 465, 425, 270, 140])
 ]
 
 function showDemography(inIndex)
@@ -115,6 +123,9 @@ function showDemography(inIndex)
     svg2.selectAll("*").remove();
 	let cate = demograhpics[demoIndex]
 	let filename = "data/demography/" + cate + ".csv"
+
+    let title = document.getElementById("demo_title")
+    title.innerText= demo_title[demoIndex];
 
 	d3.csv(filename, function(percentages) {
         let data = [];
@@ -128,6 +139,37 @@ function showDemography(inIndex)
                 idx+= 1;
             }
         }
+        // let title = svg2.selectAll("g.demo-title").data(demo_title);
+        // title.enter()
+        // .append("text")
+        // .transition().duration(450)
+        // .attr("class", "demo-title")
+        // .attr("fill", "#79D0FF")
+        // .attr("text-anchor", "middle")
+        // .attr("x", d_width/2)
+        // .attr("y", 0)
+        // .text(demo_title[demoIndex])
+        // .style("font-family","ProximaNova")
+        // .style("font-size","36px")
+        // .style("text-transform", "capitalize")
+
+        // title.enter()
+        // .append("text")
+        // .transition().duration(450)
+        // .attr("class", "demo-title")
+        // .attr("fill", "#CCCCCC")
+        // .attr("text-anchor", "middle")
+        // .text("of people who have participated in i4 NeuroLeader Program")
+        // .attr("x", d_width/2)
+        // .attr("y", 24)
+        // .style("font-family","ProximaNova")
+        // .style("font-size","16px");
+
+
+        // title.exit().remove();
+
+
+
         var node = svg2.append("g")
             .selectAll("circle")
             .data(data)
@@ -158,6 +200,7 @@ function showDemography(inIndex)
             .attr("cx", function(d){ return d.x; })
             .attr("cy", function(d){ return d.y; })
         });
+
 
         var texts = svg2.selectAll("g").selectAll("text")
 		.data(percentages, function(d) { return d; })
@@ -193,7 +236,8 @@ function changeDemoData (value)
     if (curDemoIndex < 0)
         curDemoIndex = 3;
 	// curDemoIndex %= 4;
-	showDemography(curDemoIndex);
+    showDemography(curDemoIndex)
+
 }
 
 
