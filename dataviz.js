@@ -104,6 +104,17 @@ let mouseleave = function(d) {
 function update(datatypeIndex) 
 {
 	curTypeIdx = datatypeIndex;
+	let buttons = document.getElementsByClassName("typeButton")
+	console.log(buttons)
+	for (let i = 0; i < buttons.length; i++)
+	{
+		if(i == curTypeIdx)
+			buttons[i].setAttribute("id", "activatedTypeButton")
+		else
+			buttons[i].removeAttribute("id")
+	}
+
+
 	let category = Math.abs(curCategoryIdx);
 	// console.log('Category: '+ curCategoryIdx+", Type: "+datatypeIndex);
 	let csvFile = "data/"+data_list[category][datatypeIndex]+".csv";
@@ -211,5 +222,5 @@ function changeCategory (value)
 
 
 
-update(curTypeIdx)
+changeCategory(0)
 

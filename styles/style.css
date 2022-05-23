@@ -77,14 +77,10 @@ button{
     color: #030303;
     background-color:  #e7e7e7;
 }
-
-/* .typebutton[title]:hover{
-    content: attr(title);
-    position: absolute;
-    color: aqua;
-    top: -100%;
-    left: 0;
-} */
+#activatedTypeButton{
+    color: #030303;
+    background-color: #f2f2f2;
+}
 
 #main-texts div{
     display: flex;
@@ -214,3 +210,4 @@ h4 span{
 .graphcontainer{
     /* margin-top: 10%; */
 }
+
